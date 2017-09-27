@@ -1,23 +1,20 @@
-var ControlTower = function(name){
+var ControlTower = function(name, weatherReport){
   this.name = name;
+  this.weatherReport = weatherReport;
   this.planes = [];
 }
 
-var Plane = function(){
-  this.flying = true
-}
-
 ControlTower.prototype.land = function(plane){
-  if (isStormy === true){
+  if (this.weatherReport.isStormy === true){
     return 'weather is stormy, cannot land plane';
   } else {
-  this.planes.push(this)
+  this.planes.push(plane)
   plane.flying = false;
 };
 };
 
 ControlTower.prototype.takeOff = function(plane){
-  this.planes.pop(this)
+  this.planes.pop(plane)
   plane.flying = true;
 }
 
